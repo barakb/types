@@ -180,5 +180,6 @@ The remaining axioms define the arithmetical properties of the natural numbers. 
 
 * For every natural number n, S(n) is a natural number.
 * For all natural numbers m and n, m = n if and only if S(m) = S(n). That is, S is an injection.
-* For every natural number n, S(n) = 0 is false. That is, there is no natural number whose successor is 0.
+* For every natural number n, S(n) = 0 is false. That is, there is no natural number whose successor is 0.o
 
+[piano.idr][piano.idr]
