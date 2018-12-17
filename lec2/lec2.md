@@ -37,8 +37,8 @@ Examples
 |Either a b| = |a| + |b|
 
 data Deal a b = This a
-  			  | That b
-  			  | TheOther Bool
+              | That b
+              | TheOther Bool
 
 |Deal a b| = |a| + |b| + |Bool| = |a| + |b| + 2
 
