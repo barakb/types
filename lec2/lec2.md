@@ -36,10 +36,9 @@ Examples
 ```Haskell
 |Either a b| = |a| + |b|
 
-data Deal a b
-  = This a
-  | That b
-  | TheOther Bool
+data Deal a b = This a
+  			  | That b
+  			  | TheOther Bool
 
 |Deal a b| = |a| + |b| + |Bool| = |a| + |b| + 2
 
@@ -118,20 +117,20 @@ Union types - Enumerated types that carry additional data with each value
 
 ```Idris 
 data Shape = Triangle Double Double
-	       | Rectangle Double Double
-           | Circle Double		 
+           | Rectangle Double Double
+           | Circle Double       
 ```
 
 This is the same as
 
 ```Idris
 data Shape : Type where
-	 Triangle : Double -> Double -> Shape
-	 Rectangle : Double -> Double -> Shape
-	 Circle : Double -> Shape
+     Triangle : Double -> Double -> Shape
+     Rectangle : Double -> Double -> Shape
+     Circle : Double -> Shape
 ```
 Talk about types and kinds
-	
+    
 
 Recursive types - Union types that are defined in terms of themselves
 
@@ -139,9 +138,9 @@ Recursive types - Union types that are defined in terms of themselves
 data Nat = Z | S Nat
 
 data Picture = Primitive Shape
-	         | Combine Picture Picture
-			 | Rotate Double Picture
-			 | Translate Double Double Picture
+             | Combine Picture Picture
+             | Rotate Double Picture
+             | Translate Double Double Picture
 ```
 
 Generic types - Types that are parameterized over some other types
