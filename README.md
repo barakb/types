@@ -1,1 +1,1 @@
-# types
+# lectures on types deriving development 
