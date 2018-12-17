@@ -59,8 +59,7 @@ data MixedFraction a = Fraction
 |MixedFraction a| = |Word8| × |a| × |a| = 256 × |a| × |a|
 ```
 
-
-#### prove that a × 1 = a by showing an isomorphism between (a, ()) and a.
+prove that a × 1 = a by showing an isomorphism between (a, ()) and a.
 
 ```Haskell
 prodUnitTo :: a -> (a, ())
@@ -86,19 +85,22 @@ Function types also have an encoding as
 statements about cardinality—they correspond to exponentialization
 
 More generally, the type a -> b has cardinality |b| ^ |a|.
-|a -> b| = |b| × |b| × · · · × |b| = |b| ^ |a|
+
+\|a -> b| = |b| × |b| × · · · × |b| = |b| ^ |a|
+
 
 
 The Curry–Howard Isomorphism
 
 
-Algebra   Logic    Types
-a + b     a ∨ b    Either a b
-a × b     a ∧ b    (a, b)
-b ^ a     a ⇒ b     a -> b
-a = b     a ⇐⇒ b   isomorphism
-  0         ⊥      Void
-  1         ⊤      ()
+|Algebra |  Logic  | Types         |
+|:------:|:-------:|:-------------:|
+|a + b   |  a ∨ b  | Either a b    |
+|a × b   |  a ∧ b  | (a, b)        |
+|b ^ a   |  a ⇒ b  |  a -> b       |
+|a = b   |  a ⇐⇒ b | isomorphism   |
+|  0     |    ⊥    | Void          |
+|  1     |    ⊤    | ()            |
 
 
 
