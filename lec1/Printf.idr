@@ -31,12 +31,12 @@ getIntOrString False = 0
 getIntOrString True = "0"
 
 -- "%d This is not the same as %s\n"
-
+public export
 data FormatString = Str FormatString
                   | Num FormatString
                   | Literal String FormatString
                   | End
-                  
+public export           
 parse : String -> FormatString
 parse str = parse' (unpack str)
   where
@@ -48,13 +48,14 @@ parse str = parse' (unpack str)
                             (Literal str rest) => Literal (strCons x str) rest
                             parsed => Literal (cast x) parsed
                             
-
+public export
 TypeOfFormat : FormatString -> Type
 TypeOfFormat (Str rest) = String -> TypeOfFormat rest
 TypeOfFormat (Num rest) = Int -> TypeOfFormat rest
 TypeOfFormat (Literal x rest) = TypeOfFormat rest
 TypeOfFormat End = String
 
+public export
 format : (s : String) -> TypeOfFormat (parse s)
 format s = format' (parse s) ""
   where 
