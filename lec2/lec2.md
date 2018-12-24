@@ -1,3 +1,113 @@
+### Propositional logic
+
+The propositional branch of logic is concerned with the study of propositions, which are statements that are either ⊤ (true) or ⊥ (false). 
+Variables can be used to represent propositions. Propositions are formed by other propositions with the use of logical connectives. 
+The most basic logical connectives are ∧ (and), ∨ (or), ¬ (negation), and → (implication).
+For example, we can say a = Salad is organic, and thus the variable a represents
+a true statement. Another statement is a = Rock is organic, and thus a is a false
+statement. The statement a = Hi there! is neither a true nor a false statement, and thus is not a proposition.
+
+*Every statment in propositional logic can be proved or falsified using truth table.*
+
+
+### First-order logic
+
+The first-order logic logical system extends propositional logic by addition-
+ally covering predicates and quantifiers. A predicate P (x) takes an input
+x, and produces either true or false as an output. There are two quantifiers
+introduced: ∀ (universal quantifier) and ∃ (existential quantifier).
+One example of a predicate is P(x) = x is organic, with P (Salad) = ⊤, but P (Rock) =
+⊥.
+In the following example the universal quantifier says that the predicate will hold for
+all possible choices of x: ∀x, P (x). Alternatively, the existential quantifier says that
+the predicate will hold for at least one choice of x: ∃x, P (x).
+Another example of combining a predicate with the universal quantifier is P(x) = x
+is a mammal, then ∀x, P (x) is true, for all x ranging over the set of humans. We can
+choose P(x) = x eats salad with ∃x, P (x) to say that there is at
+least one person that eats salad.
+
+The negation of the quantifiers is defined as follows:
+1. Negation of universal quantifier: ¬(∀x, P (x)) ↔ ∃x, ¬P (x)
+2. Negation of existential quantifier: ¬(∃x, P (x)) ↔ ∀x, ¬P (x)
+As an example, for P(x) = x eats salad the negation of ∃x, P (x) is
+∀x, ¬P (x). That is, the negation of there is at least one person that eats salad is for all persons x, x does not eat salad,
+or simply put nobody eat salad.
+
+
+### Higher-order logic
+In first order logic, predicates act like functions that take an input value and produce
+a proposition. A predicate can’t be true or false until a specific value is substituted for
+the variables, and the quantifiers ∀ and ∃ “close” over a predicate to give a statement
+which can be either true or false.
+Likewise, we can define a “metapredicate” that acts like a function on predicates. For
+example, let Γ(P ) be the statement there exists a person x such that P(x) is
+true. Note that it doesn’t make sense to ask if Γ(P ) is true or false until we plug in
+a specific predicate P . But we can quantify over P , and construct a statement like
+∀P, Γ(P ). In English, this statement translates to For any given property P, there
+exists a person satisfying that property.
+Metapredicates like Γ are called second-order, because they range over first order
+predicates. And there’s no reason to stop there; we could define third-order predicates
+that range over second-order predicates, and fourth-order predicates that range over
+third-order predicates, and so on.
+
+
+Moving up the hierarchy of logical systems brings power, at a price. Propositional
+(zeroth-order) logic is completely decidable. Predicate (first-order) logic is no longer
+decidable, and by Gödel’s incompleteness theorem we have to choose between
+completeness and consistency, but at least there is still an algorithm that can
+determine whether a proof is valid or not. For second-order and higher logic we
+lose even this - we have to choose between completeness, consistency, and a proof
+detection algorithm.
+
+
+### Proofs by truth tables (Propositional logic)
+
+Here’s one claim: The proposition A ∧ B → B is true for any values of A and B .
+How do you convince someone that this proposition is really true?
+We can use one proof technique which is to construct a truth table. The
+way truth tables are constructed for a given statement is to break it down
+into atoms and then include every subset of the expression.
+For example, to prove the statement A ∧ B → B , we can approach as follows:
+
+A |B |A ∧ B | A ∧ B → B
+--|--|------|----------
+⊤ |⊤ |  ⊤   |    ⊤ 
+⊤ |⊥ |  ⊥   |    ⊤
+⊥ |⊤ |  ⊥   |    ⊤
+⊥ |⊥ |  ⊥   |    ⊤
+
+### Three-column proofs (first order logic)
+
+As we’ve defined before, an argument is a list of statements. There are several ways
+to do mathematical proofs. Another one of them is by using the so-called three column proofs. For this technique we construct a table with three columns: number
+of step, step (or expression derived), and reasoning (explanation of how we got to the particular step).
+
+Modus ponens (method of affirming) and modus tollens (method of denying) are two inference rules in logic. Their definition is as follows:
+
+1. Modus ponens states: If we are given p → q and p, then we can conclude q
+2. Modus tollens states: If we are given p → q and ¬q, then we can conclude ¬p
+For example, given A ∨ B , B → C , ¬C , prove A. We can approach the proof as follows:
+
+No.|  Step		    |   Reasoning												 
+---|----------------|------------------------------------------------------------------
+1  |  A ∨ B		   	|	Given													 
+2  |  B → C		   	|	Given													 
+3  |  ¬C			|  	Given													 
+4  |  (B → C) ∧ ¬C  |	2 and 3													 
+5  |  ¬B			|  	Modus tollens rule on 4, i.e. (p → q ∧ ¬q) → ¬p			 
+6  |  (A ∨ B) ∧ ¬B  |	1 and 5													 
+7  |  A             |	6, where p ∧ ¬p is a contradiction, i.e. invalid argument
+
+
+Proofs with truth tables look a lot easier than column proofs. You just plug
+in truth values and simplify, where column proofs require planning ahead.
+Why would we bother with column proofs?
+Proofs with truth tables only work for propositional (zeroth order) theorems - the table method is essentially the decidability algorithm for zeroth
+order logic. That’s why they are easy (if verbose) and always work, and why column proofs become necessary once we’re using quantifiers.
+
+
+
+
 
 ### ADT - Algebric Data Types (A General types descuession, not Idris releated)
 
@@ -105,6 +215,9 @@ The Curry–Howard Isomorphism
 
 ### Idris types
 
+Type constractor vs data constractor.
+GADT
+
 
 Enumerated - types—Types defined by giving the possible values directly
 
@@ -150,6 +263,8 @@ data Maybe a = Just a | Nothing
 data Either a b = Left a | Right b
 data Tree elem = Empty | Node (Tree elem) elem (Tree elem)
 ```
+Phantom types
+
 
 Dependent types - Types that are computed from some other value
 
